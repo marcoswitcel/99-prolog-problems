@@ -1,7 +1,7 @@
 /*
 
-Eliminate consecutive duplicates of list elements.
-If a list contains repeated elements they should be replaced with a single copy of the element. The order of the elements should not be changed.
+Pack consecutive duplicates of list elements into sublists.
+If a list contains repeated elements they should be placed in separate sublists.
 
 */
 
