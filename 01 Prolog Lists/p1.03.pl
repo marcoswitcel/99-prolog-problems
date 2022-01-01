@@ -6,7 +6,6 @@ Example:
 X = c
 */
 
-test(K) :- K = 1, integer(K).
 
 list_element_k(Ls, Element, K) :-
     var(K),
