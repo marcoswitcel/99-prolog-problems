@@ -10,8 +10,8 @@ X = c
 list_element_k(Ls, Element, K) :-
     var(K),
     list_element_k_(Ls, Element, K, 1);
-	integer(K),
-	list_element_kb_(Ls, Element, K, 1).
+    integer(K),
+    list_element_kb_(Ls, Element, K, 1).
 
 % unbound K element	
 list_element_k_([Head|_], Head, K, K).
