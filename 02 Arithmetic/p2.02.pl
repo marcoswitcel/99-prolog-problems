@@ -38,5 +38,20 @@ has_prime_factors(N, F0, Found) :-
 	F is F0 + 1,
 	has_prime_factors(N, F, Found).
 	
-prime_factors(N, List) :-
+prime_factors_list(N, List) :-
     bagof(Factor, has_prime_factors(N, Factor), List).
+	
+prime_factors(N, List) :-
+    prime_factors_list(N, Factors),
+	prime_factors(N, List, [], Factors).
+
+prime_factors(_, Acc, Acc, []).
+prime_factors(N0, List, Acc0, [Head|Tail]) :-
+    (N0 mod Head =:= 0 ->
+	    N #= N0 // Head,
+		append(Acc0, [Head], Acc),
+		prime_factors(N, List, Acc, [Head|Tail])
+	;
+		prime_factors(N0, List, Acc0, Tail)
+	).
+    
