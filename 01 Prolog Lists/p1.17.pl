@@ -19,6 +19,6 @@ list_length_splitted_sists_([], _, FLs, FLs, []).
 list_length_splitted_sists_(Tail, 0, FLs, FLs, Tail).
 list_length_splitted_sists_([Head|Tail], L0, FLs, FLsAcc0, RLs) :-
     L0 #> 0,
-	append(FLsAcc0, [Head], FLsAcc1),
-	L1 #= L0 - 1,
+    append(FLsAcc0, [Head], FLsAcc1),
+    L1 #= L0 - 1,
     list_length_splitted_sists_(Tail, L1, FLs, FLsAcc1, RLs).

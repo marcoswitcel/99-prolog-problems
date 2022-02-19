@@ -14,8 +14,8 @@ list_times_repliaced(Ls, Times, RLs) :-
 appendN(NLs, _, 0, NLs).
 appendN(Acc0, Ls, Times, NLs) :-
     Times #> 0,
-	NewTimes #= Times - 1,
-	append(Acc0, Ls, Acc1),
+    NewTimes #= Times - 1,
+    append(Acc0, Ls, Acc1),
     appendN(Acc1, Ls, NewTimes, NLs).
     
 	

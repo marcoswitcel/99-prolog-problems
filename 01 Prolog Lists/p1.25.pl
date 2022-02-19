@@ -18,16 +18,16 @@ remove_at(_, [], _, _, Acc, Acc).
 remove_at(Who, [Head|Tail], At, Count0, NLs, Acc0) :-
     Count1 #= Count0 + 1,
     ( Count0 #= At ->
-	    Who = Head,
-		remove_at(Who, Tail, At, Count1, NLs, Acc0)
-	;
-	    append(Acc0, [Head], Acc1),
-		remove_at(Who, Tail, At, Count1, NLs, Acc1)
-	).
+        Who = Head,
+        remove_at(Who, Tail, At, Count1, NLs, Acc0)
+    ;
+        append(Acc0, [Head], Acc1),
+        remove_at(Who, Tail, At, Count1, NLs, Acc1)
+    ).
 
 list_element_k(Ls, Element, K) :-
     list_element_k_(Ls, Element, K, 1).
-	
+
 list_element_k_([Head|_], Head, K, K).
 list_element_k_([_|Tail], Element, K, Acc) :-
     AccNext is Acc + 1,
@@ -35,15 +35,13 @@ list_element_k_([_|Tail], Element, K, Acc) :-
 
 rnd_permu(Ls, NLs) :-
     rnd_permu(Ls, NLs, []).
-	
+
 rnd_permu([], NLs, NLs).
 rnd_permu(Ls, NLs, Acc0) :- 
     length(Ls, Length),
-	UpperLimit #= Length + 1,
-	random(1, UpperLimit, Random),
-	list_element_k(Ls, Element, Random),
-	remove_at(_, Ls, Random, ListWithout),
-	append(Acc0, [Element], Acc),
-	rnd_permu(ListWithout, NLs, Acc).
-	
-	
+    UpperLimit #= Length + 1,
+    random(1, UpperLimit, Random),
+    list_element_k(Ls, Element, Random),
+    remove_at(_, Ls, Random, ListWithout),
+    append(Acc0, [Element], Acc),
+    rnd_permu(ListWithout, NLs, Acc).

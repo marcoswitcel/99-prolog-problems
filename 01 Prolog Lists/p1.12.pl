@@ -9,15 +9,15 @@ decode(ELs, Ls) :-
     decode_(ELs, Ls, []).
 
 returnAtom(Atom, Atom).
-	
+    
 decode_([], Acc, Acc).
 decode_([Head|Tail], Ls, Acc0) :-
     (atom(Head) ->
-	    append(Acc0, [Head], Acc)
-	;
-	    =([Length, Atom], Head),
-		length(List, Length),
-		maplist(returnAtom(Atom), List),
-	    append(Acc0, List, Acc)
-	),
+        append(Acc0, [Head], Acc)
+    ;
+        =([Length, Atom], Head),
+        length(List, Length),
+        maplist(returnAtom(Atom), List),
+        append(Acc0, List, Acc)
+    ),
     decode_(Tail, Ls, Acc).

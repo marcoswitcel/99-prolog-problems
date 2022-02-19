@@ -20,20 +20,20 @@ encode_sublist(Ls, 1, Head, NLs):-
 encode_sublist(Ls, N, Head, NLs):-
     N #\= 1,
     append(Ls, [[N, Head]], NLs).
-    
-	
+
+
 encode_direct_([], Acc, _, Acc).
 encode_direct_([Head|Tail], ELs, N0, Acc0) :-
     ([NextHead|_] = Tail ->
-	   (dif(Head, NextHead) ->
-			encode_sublist(Acc0, N0, Head, Acc),
-			encode_direct_(Tail, ELs, 1, Acc)
-		;
-			N #= N0 + 1,
-			encode_direct_(Tail, ELs, N, Acc0)
-		)
-	;
-	    
-		encode_sublist(Acc0, N0, Head, Acc),
-		encode_direct_(Tail, ELs, 1, Acc)
-	).
+        (dif(Head, NextHead) ->
+            encode_sublist(Acc0, N0, Head, Acc),
+            encode_direct_(Tail, ELs, 1, Acc)
+        ;
+            N #= N0 + 1,
+            encode_direct_(Tail, ELs, N, Acc0)
+        )
+    ;
+        
+        encode_sublist(Acc0, N0, Head, Acc),
+        encode_direct_(Tail, ELs, 1, Acc)
+    ).

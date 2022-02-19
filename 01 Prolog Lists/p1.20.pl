@@ -17,9 +17,9 @@ remove_at(_, [], _, _, Acc, Acc).
 remove_at(Who, [Head|Tail], At, Count0, NLs, Acc0) :-
     Count1 #= Count0 + 1,
     ( Count0 #= At ->
-	    Who = Head,
-		remove_at(Who, Tail, At, Count1, NLs, Acc0)
-	;
-	    append(Acc0, [Head], Acc1),
-		remove_at(Who, Tail, At, Count1, NLs, Acc1)
-	).
+        Who = Head,
+        remove_at(Who, Tail, At, Count1, NLs, Acc0)
+    ;
+        append(Acc0, [Head], Acc1),
+        remove_at(Who, Tail, At, Count1, NLs, Acc1)
+    ).

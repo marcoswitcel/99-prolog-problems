@@ -15,11 +15,10 @@ insert_at(V, Ls, At, NLs) :-
 insert_at(_, [], _, Acc, Acc).
 insert_at(V, [Head|Tail], At0, NLs, Acc0) :-
     At1 #= At0 - 1,
-	( At0 #= 1 ->
-	    append(Acc0, [V, Head], Acc1),
-	    insert_at(V, Tail, At1, NLs, Acc1)
-	;
-	    append(Acc0, [Head], Acc1),
-	    insert_at(V, Tail, At1, NLs, Acc1)
-	).
-    
+    ( At0 #= 1 ->
+        append(Acc0, [V, Head], Acc1),
+        insert_at(V, Tail, At1, NLs, Acc1)
+    ;
+        append(Acc0, [Head], Acc1),
+        insert_at(V, Tail, At1, NLs, Acc1)
+    ).

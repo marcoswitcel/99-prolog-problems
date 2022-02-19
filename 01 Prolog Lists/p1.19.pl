@@ -22,14 +22,14 @@ rotate(NLs, 0, NLs).
 rotate(Ls, Value0, RLs) :-
     Value0 #\= 0,
     ( Value0 #> 0 ->
-	    Ls = [Head|Tail],
-	    append(Tail, [Head], Acc1),
-		Value1 #= Value0 - 1,
-	    rotate(Acc1, Value1, RLs)
-	;
-	    last(Ls, Last),
-		list_butlast(Ls, LsWihoutLast),
-	    Acc1 = [Last|LsWihoutLast],
-		Value1 #= Value0 + 1,
-	    rotate(Acc1, Value1, RLs)
-	).
+        Ls = [Head|Tail],
+        append(Tail, [Head], Acc1),
+        Value1 #= Value0 - 1,
+        rotate(Acc1, Value1, RLs)
+    ;
+        last(Ls, Last),
+        list_butlast(Ls, LsWihoutLast),
+        Acc1 = [Last|LsWihoutLast],
+        Value1 #= Value0 + 1,
+        rotate(Acc1, Value1, RLs)
+    ).

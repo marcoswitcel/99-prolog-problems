@@ -13,23 +13,23 @@ Example:
 
 slice(Ls, Start, End, SLs) :-
     (
-	    End #> Start
-	;
-	    End #= Start
-	),
+        End #> Start
+    ;
+        End #= Start
+    ),
     slice(Ls, Start, End, SLs, 1, []).
 
 slice([Head|_], _, End, SLs, Counter0, Acc0) :-
     Counter0 #= End,
-	append(Acc0, [Head], Acc1),
-	SLs = Acc1.
-slice([Head|Tail], Start, End, SLs, Counter0, Acc0) :-
+    append(Acc0, [Head], Acc1),
+    SLs = Acc1.
 
+slice([Head|Tail], Start, End, SLs, Counter0, Acc0) :-
     Counter1 #= Counter0 + 1,
-	Counter0 #< End,
-	( Counter1 #> Start ->
-	    append(Acc0, [Head], Acc1),
-	    slice(Tail, Start, End, SLs, Counter1, Acc1)
-	;
-	    slice(Tail, Start, End, SLs, Counter1, Acc0)
-	).
+    Counter0 #< End,
+    ( Counter1 #> Start ->
+        append(Acc0, [Head], Acc1),
+        slice(Tail, Start, End, SLs, Counter1, Acc1)
+    ;
+        slice(Tail, Start, End, SLs, Counter1, Acc0)
+    ).
