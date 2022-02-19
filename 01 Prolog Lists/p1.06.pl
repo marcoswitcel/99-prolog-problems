@@ -12,8 +12,8 @@ list_reversed(Ls, Rs):-
 list_reversed([], Acc, Acc).
 list_reversed([Head|Tail], RLs, Acc) :-
     RLs0 = [Head|Acc],
-	list_reversed(Tail, RLs, RLs0).
-	
+    list_reversed(Tail, RLs, RLs0).
+
 list_palindrome(Ls) :-
     list_reversed(Ls, RLs),
-	maplist(=, Ls, RLs).
+    maplist(=, Ls, RLs).

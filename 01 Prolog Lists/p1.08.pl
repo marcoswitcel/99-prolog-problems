@@ -11,9 +11,8 @@ list_compressed(Ls, CLs) :-
 list_compressed([], CLs, CLs).
 list_compressed([Head|Tail], CLs, Acc) :-
     ( [NextHead|_] = Tail, dif(Head, NextHead) ->
-			append(Acc, [Head], Acc1),
-			list_compressed(Tail,CLs, Acc1)
-		;
-			list_compressed(Tail,CLs, Acc)
-	).
-    
+            append(Acc, [Head], Acc1),
+            list_compressed(Tail,CLs, Acc1)
+        ;
+            list_compressed(Tail,CLs, Acc)
+    ).

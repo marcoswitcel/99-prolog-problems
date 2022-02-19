@@ -14,20 +14,20 @@ encode(Ls, PLs) :-
 
 encode_(_, [], NSubList, NTail, Acc0) :-
     NSubList = Acc0,
-	NTail = [].
-	
+    NTail = [].
+
 encode_(Head, [THead|Tail], NSubList, NTail, Acc0) :-
     ( dif(Head, THead) ->
-		NSubList = Acc0,
-		NTail = [THead|Tail]
-	;
-		append(Acc0, [Head], Acc1),
-		encode_(Head, Tail, NSubList, NTail, Acc1)
-	).
-	
+        NSubList = Acc0,
+        NTail = [THead|Tail]
+    ;
+        append(Acc0, [Head], Acc1),
+        encode_(Head, Tail, NSubList, NTail, Acc1)
+    ).
+
 encode_([], Acc, Acc).
 encode_([Head|Tail], PLs, Acc0) :-
     encode_(Head, Tail, NSubList, RemainingTail, [Head]),
-	length(NSubList, Length),
-	append(Acc0, [[Length, Head]], Acc1),
+    length(NSubList, Length),
+    append(Acc0, [[Length, Head]], Acc1),
     encode_(RemainingTail, PLs, Acc1).
